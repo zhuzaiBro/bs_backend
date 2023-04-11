@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gs.project.biz.mapper.ArticleMapper">
+
+    <resultMap id="ArticleResult" type="Article">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="author" column="author"/>
+        <result property="from" column="from"/>
+        <result property="createAt" column="create_at"/>
+        <result property="description" column="description"/>
+        <result property="picUrl" column="picUrl" />
+        <result property="url" column="url"/>
+    </resultMap>
+
+    <sql id="selectArticleVo">
+        select * from article
+    </sql>
+
+    <insert id="insertArticle" parameterType="Article" >
+        insert into article (
+            description, picUrl,  url, `title`, `content`, author, `from`, create_at
+        ) values (
+            #{description}, #{picUrl}, #{url}, #{title}, #{content}, #{author}, #{from}, sysdate()
+                         )
+    </insert>
+
+    <select id="getArticle" resultMap="ArticleResult">
+        <include refid="selectArticleVo"></include>
+        limit ${pageBegin}, ${pageSize}
+    </select>
+
+</mapper>
+
+

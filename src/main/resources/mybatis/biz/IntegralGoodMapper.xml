@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.project.biz.mapper.IntegralGoodMapper">
+
+    <resultMap id="IntegralGoodResult" type="IntegralGood">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"/>
+        <result property="content" column="content"/>
+        <result property="description" column="description"/>
+        <result property="stock" column="stock"/>
+        <result property="integral" column="integral"/>
+        <result property="banners" column="banners"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+    <sql id="selectIntegralGoodVo">
+        select g.id, g.name, g.content, g.description, g.stock, g.integral, g.banners
+        from integral_good g
+    </sql>
+
+    <insert id="createIntegralGood" parameterType="IntegralGood">
+        insert into integral_good (name, description, content, stock, integral, banners, is_del, create_time)
+        values (#{name}, #{description}, #{content}, #{stock}, #{integral}, #{banners}, 0, sysdate())
+    </insert>
+
+    <select id="selectGoodById" resultMap="IntegralGoodResult">
+        <include refid="selectIntegralGoodVo"></include>
+        where id=#{id}
+    </select>
+
+    <select id="getGoodList" resultMap="IntegralGoodResult">
+        <include refid="selectIntegralGoodVo"></include>
+        limit ${pageBegin}, ${pageSize}
+    </select>
+
+    <update id="updateGood">
+        update `integral_good`
+        <set>
+            name=#{name},integral=#{integral},stock=#{stock},banners=#{banners},description=#{description},
+            content=#{content}, update_time=sysdate()
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>

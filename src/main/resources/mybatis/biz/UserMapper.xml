@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.project.biz.mapper.UserMapper">
+
+    <resultMap type="User" id="UserResult">
+        <id property="id" column="id"/>
+        <result property="maOpenId" column="ma_open_id"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="mobile" column="mobile"/>
+        <result property="integral" column="integral"/>
+        <result property="avatarUrl" column="avatar_url"/>
+
+
+    </resultMap>
+
+    <sql id="selectUserVo">
+        select * from `user`
+    </sql>
+
+    <insert id="insertUser" parameterType="User">
+        insert into `user` (
+        <if test="maOpenId != null and maOpenId != ''">ma_open_id,</if>
+        <if test="nickName != null and nickName != ''">nick_name,</if>
+        <if test="mobile != null and mobile != ''">mobile,</if>
+        <if test="integral != null and integral != 0">integral,</if>
+        avatar_url, create_time
+        )values (
+        <if test="maOpenId != null and maOpenId != ''">#{maOpenId},</if>
+        <if test="nickName != null and nickName != ''">#{nickName},</if>
+        <if test="mobile != null and mobile != ''">#{mobile},</if>
+        <if test="integral != null and integral != 0">#{integral},</if>
+        #{avatarUrl}, sysdate()
+        )
+    </insert>
+
+    <select id="selectUserByMaOpenId" parameterType="String" resultMap="UserResult">
+        <include refid="selectUserVo"></include>
+        where ma_open_id = #{maOpenId}
+    </select>
+
+    <select id="selectUserById" parameterType="Long" resultMap="UserResult">
+        <include refid="selectUserVo"></include>
+        where id = #{id}
+    </select>
+
+    <select id="selectUserList" resultMap="UserResult">
+        <include refid="selectUserVo"></include>
+        order by id desc
+        limit ${start}, ${end}
+    </select>
+
+    <update id="updateUserInfo" parameterType="User">
+        update `user`
+        <set>
+            mobile=#{mobile},integral=#{integral},nick_name=#{nickName},avatar_url=#{avatarUrl},
+            update_time=sysDate()
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

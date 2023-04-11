@@ -1,0 +1,103 @@
+gs:
+  name: garbabgesort
+  version: 3.8.1
+  copyrightYear: 2023
+  demoEnabled: true
+  profile: D:/garbabgesort/uploadPath
+  addressEnabled: false
+  captchaType: math
+
+server:
+  port: 8899
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    accept-count: 1000
+    threads:
+      max: 800
+      min-spare: 100
+
+
+logging:
+  level:
+    com.gs: debug
+    org.springframework: warn
+
+
+spring:
+  messages:
+    basename: i18n/messages_zh_CN
+  profiles: 
+    active: druid
+  servlet:
+     multipart:
+       max-file-size:  10MB
+       max-request-size:  20MB
+
+  devtools:
+    restart:
+      enabled: true
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    password:
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+
+token:
+    header: Authorization
+    secret: abcdefghijklmnopqrstuvwxyz
+    expireTime: 30
+
+cos:
+  SecretId: AKIDb6Wq38DIRcp5Pk5Qj0LWcfbQFJG4mNtS
+  SecretKey: kUAiKydK5qX3TtmeQOF6vfXLPZgqxESb
+  url: https://homework-1309397063.cos.ap-shanghai.myqcloud.com/
+  region: ap-shanghai
+  bucketName: homework-1309397063
+  policy_expire: 300
+  code_format: 0
+  path: update/
+
+
+mybatis:
+    typeAliasesPackage: com.gs.project.**.domain
+    mapperLocations: classpath*:mybatis/**/*Mapper.xml
+    configLocation: classpath:mybatis/mybatis-config.xml
+#
+#pagehelper:
+#  helperDialect: mysql
+#  supportMethodsArguments: true
+#  params: count=countSql
+
+swagger:
+  enabled: true
+  pathMapping: /dev-api
+
+xss:
+  enabled: true
+  excludes: /system/notice
+  urlPatterns: /system/*,/monitor/*,/tool/*
+
+wx:
+  miniapp:
+    configs:
+      - appid: wxde83f2775c356dad
+        secret: 89aed0503fa0aba29a2e501339563a55
+        token: #微信小程序消息服务器配置的token
+        aesKey: #微信小程序消息服务器配置的EncodingAESKey
+        msgDataFormat: JSON
+
+gen:
+  author: ruoyi
+  packageName: com.garbabgeSortingSystem.project.system
+  autoRemovePre: false
+  tablePrefix: sys_
