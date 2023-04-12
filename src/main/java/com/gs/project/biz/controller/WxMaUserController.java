@@ -15,6 +15,7 @@ import com.gs.framework.web.domain.AjaxResult;
 import com.gs.project.biz.domain.User;
 import com.gs.project.biz.domain.WxLoginRequest;
 import com.gs.project.biz.service.UserService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -30,6 +31,7 @@ import java.util.List;
  *
  * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
+@Api("普通用户登录")
 @RestController
 @AllArgsConstructor
 @Slf4j

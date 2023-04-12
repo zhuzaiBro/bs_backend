@@ -22,4 +22,7 @@ public interface IntegralGoodService {
 
     // 删除
     public void deleteGoods(long[] ids);
+
+    // 查询
+    public IntegralGoodVo getGoodDetail(long goodId);
 }

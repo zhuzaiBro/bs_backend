@@ -9,8 +9,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 /**
  * 启动程序
  */
-
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class Application
 {
     public static void main(String[] args)

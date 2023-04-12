@@ -14,7 +14,6 @@ public class IntegralAction {
     private String info;
     private long userId;
     private Date createTime;
-
     // 枚举积分用途 value < 0 为 减少，
     private UseWay useWay;
 

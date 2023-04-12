@@ -6,6 +6,7 @@ import com.qcloud.cos.model.PutObjectResult;
 import com.gs.common.utils.file.TCCOSConfig;
 import com.gs.framework.web.controller.BaseController;
 import com.gs.framework.web.domain.AjaxResult;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -20,8 +21,8 @@ import java.util.UUID;
 /**
  * 用户信息
  *
- * @author ruoyi
  */
+@Api("上传文件")
 @RestController
 public class UploadController extends BaseController {
 

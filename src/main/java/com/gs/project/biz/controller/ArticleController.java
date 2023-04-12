@@ -4,11 +4,13 @@ package com.gs.project.biz.controller;
 import com.gs.framework.web.domain.AjaxResult;
 import com.gs.project.biz.domain.Article;
 import com.gs.project.biz.service.ArticleService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api("文章管理")
 @RestController
 @RequestMapping("/api/article")
 public class ArticleController {

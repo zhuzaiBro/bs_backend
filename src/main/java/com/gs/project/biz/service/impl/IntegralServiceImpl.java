@@ -47,4 +47,10 @@ public class IntegralServiceImpl implements IntegralService {
 
         return integralRelMapper.selectTodayRel(userId, 0, 10);
     }
+
+    @Override
+    public List<IntegralAction> getMyRel(long userId) {
+
+        return integralRelMapper.selectRelList(userId, 0, 10);
+    }
 }

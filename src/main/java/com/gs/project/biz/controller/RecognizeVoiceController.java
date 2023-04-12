@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gs.common.utils.file.TCCOSConfig;
 import com.gs.common.utils.file.URLRecognition;
 import com.gs.framework.web.domain.AjaxResult;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.*;
 
 import static org.apache.tomcat.util.codec.binary.Base64.encodeBase64String;
 
+@Api("识别API")
 @RestController
 @RequestMapping("/voice")
 // 语音识别

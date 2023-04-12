@@ -86,7 +86,7 @@ public class QuestionServiceImpl implements QuestionService {
         for (int i = 0; i < cacheList.size(); i++) {
             QuestionVo userData = paper.get(i);
             QuestionVo sysData = cacheList.get(i);
-            if (!Objects.equals(userData.getUAnswer(), sysData.getAns())) {
+            if (!Objects.equals(userData.getUAnswer().trim(), sysData.getAns().trim())) {
                 // 默认设置一题5分
                 score -= 5;
             }

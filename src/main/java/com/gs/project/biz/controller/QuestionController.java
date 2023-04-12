@@ -5,11 +5,13 @@ import com.gs.framework.web.domain.AjaxResult;
 import com.gs.project.biz.domain.Question;
 import com.gs.project.biz.domain.QuestionVo;
 import com.gs.project.biz.service.QuestionService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import static com.gs.common.utils.SecurityUtils.getUserId;
 
+@Api("答题部分")
 @RestController
 @RequestMapping("/api/question")
 public class QuestionController {

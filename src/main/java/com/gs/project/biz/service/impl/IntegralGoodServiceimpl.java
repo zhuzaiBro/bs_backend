@@ -1,17 +1,14 @@
 package com.gs.project.biz.service.impl;
 
-import com.gs.project.biz.domain.IntegralGood;
-import com.gs.project.biz.domain.IntegralGoodVo;
-import com.gs.project.biz.domain.IntegralParam;
-import com.gs.project.biz.domain.User;
+import com.gs.project.biz.domain.*;
 import com.gs.project.biz.mapper.IntegralGoodMapper;
+import com.gs.project.biz.mapper.IntegralRelMapper;
 import com.gs.project.biz.mapper.UserMapper;
 import com.gs.project.biz.service.IntegralGoodService;
 import com.gs.project.biz.service.IntegralService;
-import net.bytebuddy.implementation.bytecode.Throw;
+import com.gs.project.biz.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +19,16 @@ public class IntegralGoodServiceimpl implements IntegralGoodService {
     IntegralGoodMapper integralGoodMapper;
 
     @Autowired
+    TicketService ticketService;
+
+    @Autowired
     UserMapper userMapper;
 
     @Autowired
     IntegralService integralService;
+
+    @Autowired
+    IntegralRelMapper integralRelMapper;
 
     @Override
     public void handleExchange(long userId, long goodId) throws Exception {
@@ -41,6 +44,21 @@ public class IntegralGoodServiceimpl implements IntegralGoodService {
             // v1版本默认先每次兑换一个
             goodInfo.setStock(goodInfo.getStock() - 1);
             integralGoodMapper.updateGood(goodInfo);
+            IntegralAction action = new IntegralAction();
+            action.setNum(goodInfo.getIntegral());
+            action.setType(1);
+            action.setUserId(userId);
+            action.setInfo("用户兑换积分商品"+ goodInfo.getName());
+            integralRelMapper.insertRel(action);
+
+            // ticket
+            Ticket t = new Ticket();
+            t.setGoodId(goodInfo.getId());
+            t.setUserId(userId);
+            t.setName(goodInfo.getName());
+            t.setNum(goodInfo.getIntegral());
+            t.setCover(goodInfo.buildVo().getBanners().get(0));
+            ticketService.insertTicket(t);
         } else {
             throw new Exception("用户积分不足！");
         }
@@ -75,5 +93,11 @@ public class IntegralGoodServiceimpl implements IntegralGoodService {
             // 遍历逐个进行删除
             integralGoodMapper.deleteIntegralGood(id);
         }
+    }
+
+    @Override
+    public IntegralGoodVo getGoodDetail(long goodId) {
+        IntegralGood data = integralGoodMapper.selectGoodById(goodId);
+        return data.buildVo();
     }
 }

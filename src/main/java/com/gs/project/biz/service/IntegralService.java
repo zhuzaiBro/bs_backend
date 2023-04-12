@@ -10,4 +10,6 @@ public interface IntegralService {
     public void addIntegralRel(IntegralAction action);
 
     public List<IntegralAction> getTodayRel(long userId);
+
+    public List<IntegralAction> getMyRel(long userId);
 }

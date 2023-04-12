@@ -19,4 +19,7 @@ public interface IntegralRelMapper {
 
     // 查询用户当天积分变动
     public List<IntegralAction> selectTodayRel(long userId, Integer begin, Integer end);
+
+    // 查询积分变动
+    public List <IntegralAction> selectRelList(long userId, Integer begin, Integer end);
 }

@@ -5,11 +5,13 @@ import com.gs.framework.web.domain.AjaxResult;
 import com.gs.project.biz.domain.*;
 import com.gs.project.biz.service.IntegralGoodService;
 import com.gs.project.biz.service.IntegralService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api("积分兑换管理")
 @RestController
 @RequestMapping("/api/integral")
 public class IntegralController {
@@ -49,6 +51,14 @@ public class IntegralController {
         return new AjaxResult(200, "上传成功", "上传成功");
     }
 
+    @GetMapping("/detail")
+    public AjaxResult getGoodDetail(long goodId) {
+        AjaxResult ajax = AjaxResult.success();
+        IntegralGoodVo data = integralGoodService.getGoodDetail(goodId);
+
+        ajax.put("data", data);
+        return ajax;
+    }
 
     // 修改商品
     @PutMapping("/")
@@ -76,4 +86,17 @@ public class IntegralController {
        ajax.put("data", list);
        return ajax;
     }
+
+    @PostMapping("/my/rel")
+    public AjaxResult getMyRel() {
+        AjaxResult ajax = AjaxResult.success();
+
+        long userId = SecurityUtils.getLoginUser().getUser().getId();
+        List<IntegralAction> list = integralService.getMyRel(userId);
+
+        ajax.put("data", list);
+        return ajax;
+    }
+
+
 }
