@@ -68,4 +68,12 @@ public class IntegralGoodServiceimpl implements IntegralGoodService {
     public void updateGoodInfo(IntegralGood goodInfo) {
         integralGoodMapper.updateGood(goodInfo);
     }
+
+    @Override
+    public void deleteGoods(long[] ids) {
+        for(long id : ids ) {
+            // 遍历逐个进行删除
+            integralGoodMapper.deleteIntegralGood(id);
+        }
+    }
 }

@@ -13,33 +13,45 @@
     </resultMap>
 
     <sql id="selectQuestionVo">
-        select * from examine_question
+        select * from examine_question where is_del='0'
     </sql>
 
     <insert id="insertQuestion">
         insert into examine_question (
-           type, content, pic_url
+           `type`, content, pic_url, `create_at`
         ) values (
-            #{type}, #{content}, #{picUrl}
+            #{type}, #{content}, #{picUrl}, sysdate()
         )
     </insert>
 
     <select id="getSelectQuestionList" parameterType="String" resultMap="QuestionResult">
         <include refid="selectQuestionVo"></include>
-        where `type` = 'select' order by rand()  limit ${num};
+        and `type` = 'select' order by rand()  limit ${num};
     </select>
 
     <select id="getJudgeQuestionList" parameterType="String" resultMap="QuestionResult">
         <include refid="selectQuestionVo"></include>
-        where `type` = 'judge' order by rand() limit ${num};
+        and `type` = 'judge' order by rand() limit ${num};
     </select>
 
     <select id="getQuestionList" resultMap="QuestionResult">
         <include refid="selectQuestionVo"></include>
-        where `type` = '${type}'
+        and `type` = '${type}'
         order by id desc
         limit ${start}, ${end}
     </select>
+
+    <delete id="deleteQuestion">
+        update `examine_question` set is_del='1' where id=${id}
+    </delete>
+
+    <update id="updateQuestion" parameterType="Question">
+        update `examine_question`
+        <set>
+            `type`=#{type}, content=#{content}, pic_url=#{picUrl}, `update_at`=sysdate()
+        </set>
+        where id = #{id} and `is_del`='0'
+    </update>
 
 
 </mapper>

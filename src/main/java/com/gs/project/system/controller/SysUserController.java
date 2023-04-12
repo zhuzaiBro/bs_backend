@@ -27,7 +27,7 @@ import com.gs.framework.web.domain.AjaxResult;
 import com.gs.framework.web.page.TableDataInfo;
 import com.gs.project.system.domain.SysRole;
 import com.gs.project.system.domain.SysUser;
-import com.gs.project.system.service.ISysPostService;
+//import com.gs.project.system.service.ISysPostService;
 import com.gs.project.system.service.ISysRoleService;
 import com.gs.project.system.service.ISysUserService;
 
@@ -46,8 +46,8 @@ public class SysUserController extends BaseController
     @Autowired
     private ISysRoleService roleService;
 
-    @Autowired
-    private ISysPostService postService;
+//    @Autowired
+//    private ISysPostService postService;
 
     /**
      * 获取用户列表
@@ -101,12 +101,12 @@ public class SysUserController extends BaseController
         AjaxResult ajax = AjaxResult.success();
         List<SysRole> roles = roleService.selectRoleAll();
         ajax.put("roles", SysUser.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
-        ajax.put("posts", postService.selectPostAll());
+//        ajax.put("posts", postService.selectPostAll());
         if (StringUtils.isNotNull(userId))
         {
             SysUser sysUser = userService.selectUserById(userId);
             ajax.put(AjaxResult.DATA_TAG, sysUser);
-            ajax.put("postIds", postService.selectPostListByUserId(userId));
+//            ajax.put("postIds", postService.selectPostListByUserId(userId));
             ajax.put("roleIds", sysUser.getRoles().stream().map(SysRole::getRoleId).collect(Collectors.toList()));
         }
         return ajax;

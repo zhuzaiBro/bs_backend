@@ -16,7 +16,7 @@ import com.gs.common.utils.StringUtils;
 import com.gs.common.utils.file.FileUploadUtils;
 import com.gs.framework.aspectj.lang.annotation.Log;
 import com.gs.framework.aspectj.lang.enums.BusinessType;
-import com.gs.framework.config.RuoYiConfig;
+import com.gs.framework.config.GSConfig;
 import com.gs.framework.security.LoginUser;
 import com.gs.framework.security.service.TokenService;
 import com.gs.framework.web.controller.BaseController;
@@ -49,7 +49,6 @@ public class SysProfileController extends BaseController
         SysUser user = loginUser.getAdminUser();
         AjaxResult ajax = AjaxResult.success(user);
         ajax.put("roleGroup", userService.selectUserRoleGroup(loginUser.getUsername()));
-        ajax.put("postGroup", userService.selectUserPostGroup(loginUser.getUsername()));
         return ajax;
     }
 
@@ -126,7 +125,7 @@ public class SysProfileController extends BaseController
         if (!file.isEmpty())
         {
             LoginUser loginUser = getLoginUser();
-            String avatar = FileUploadUtils.upload(RuoYiConfig.getAvatarPath(), file);
+            String avatar = FileUploadUtils.upload(GSConfig.getAvatarPath(), file);
             if (userService.updateUserAvatar(loginUser.getUsername(), avatar))
             {
                 AjaxResult ajax = AjaxResult.success();

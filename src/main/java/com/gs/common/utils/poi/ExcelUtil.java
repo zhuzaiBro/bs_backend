@@ -20,6 +20,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gs.framework.config.GSConfig;
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
 import org.apache.poi.hssf.usermodel.HSSFPicture;
 import org.apache.poi.hssf.usermodel.HSSFPictureData;
@@ -74,7 +76,6 @@ import com.gs.framework.aspectj.lang.annotation.Excel;
 import com.gs.framework.aspectj.lang.annotation.Excel.ColumnType;
 import com.gs.framework.aspectj.lang.annotation.Excel.Type;
 import com.gs.framework.aspectj.lang.annotation.Excels;
-import com.gs.framework.config.RuoYiConfig;
 import com.gs.framework.web.domain.AjaxResult;
 
 /**
@@ -1089,7 +1090,7 @@ public class ExcelUtil<T>
      */
     public String getAbsoluteFile(String filename)
     {
-        String downloadPath = RuoYiConfig.getDownloadPath() + filename;
+        String downloadPath = GSConfig.getDownloadPath() + filename;
         File desc = new File(downloadPath);
         if (!desc.getParentFile().exists())
         {

@@ -19,7 +19,7 @@
 
     <sql id="selectIntegralGoodVo">
         select g.id, g.name, g.content, g.description, g.stock, g.integral, g.banners
-        from integral_good g
+        from integral_good g where is_del = '0'
     </sql>
 
     <insert id="createIntegralGood" parameterType="IntegralGood">
@@ -29,12 +29,12 @@
 
     <select id="selectGoodById" resultMap="IntegralGoodResult">
         <include refid="selectIntegralGoodVo"></include>
-        where id=#{id}
+        and id=#{id}
     </select>
 
     <select id="getGoodList" resultMap="IntegralGoodResult">
         <include refid="selectIntegralGoodVo"></include>
-        limit ${pageBegin}, ${pageSize}
+        order by id desc limit ${pageBegin}, ${pageSize}
     </select>
 
     <update id="updateGood">
@@ -43,7 +43,11 @@
             name=#{name},integral=#{integral},stock=#{stock},banners=#{banners},description=#{description},
             content=#{content}, update_time=sysdate()
         </set>
-        where id=#{id}
+        where id=#{id} and is_del = '0'
     </update>
+
+    <delete id="deleteIntegralGood">
+        update `integral_good` set is_del = '1' where id = ${id}
+    </delete>
 
 </mapper>

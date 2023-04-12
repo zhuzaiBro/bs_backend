@@ -14,4 +14,8 @@ public interface QuestionMapper {
     public void insertQuestion(Question question);
 
     public List<Question> getQuestionList(String type, Integer start, Integer end);
+
+    public void deleteQuestion(long id);
+
+    public void updateQuestion(Question question);
 }

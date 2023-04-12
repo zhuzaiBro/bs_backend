@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gs.common.constant.ScheduleConstants;
 import com.gs.common.utils.StringUtils;
-import com.gs.common.utils.job.CronUtils;
+//import com.gs.common.utils.job.CronUtils;
 import com.gs.framework.aspectj.lang.annotation.Excel;
 import com.gs.framework.aspectj.lang.annotation.Excel.ColumnType;
 import com.gs.framework.web.domain.BaseEntity;
@@ -109,16 +109,16 @@ public class SysJob extends BaseEntity
     {
         this.cronExpression = cronExpression;
     }
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public Date getNextValidTime()
-    {
-        if (StringUtils.isNotEmpty(cronExpression))
-        {
-            return CronUtils.getNextExecution(cronExpression);
-        }
-        return null;
-    }
+//
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    public Date getNextValidTime()
+//    {
+//        if (StringUtils.isNotEmpty(cronExpression))
+//        {
+//            return CronUtils.getNextExecution(cronExpression);
+//        }
+//        return null;
+//    }
 
     public String getMisfirePolicy()
     {
@@ -157,7 +157,7 @@ public class SysJob extends BaseEntity
             .append("jobName", getJobName())
             .append("jobGroup", getJobGroup())
             .append("cronExpression", getCronExpression())
-            .append("nextValidTime", getNextValidTime())
+//            .append("nextValidTime", getNextValidTime())
             .append("misfirePolicy", getMisfirePolicy())
             .append("concurrent", getConcurrent())
             .append("status", getStatus())

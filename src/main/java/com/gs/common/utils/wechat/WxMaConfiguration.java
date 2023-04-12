@@ -41,7 +41,7 @@ public class WxMaConfiguration {
     public WxMaService wxMaService() {
         List<WxMaProperties.Config> configs = this.properties.getConfigs();
         if (configs == null) {
-            throw new WxRuntimeException("大哥，拜托先看下项目首页的说明（readme文件），添加下相关配置，注意别配错了！");
+            throw new WxRuntimeException("添加下相关配置，注意别配错了！");
         }
         WxMaService maService = new WxMaServiceImpl();
         maService.setMultiConfigs(

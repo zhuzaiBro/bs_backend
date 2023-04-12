@@ -8,8 +8,7 @@ import com.gs.common.utils.spring.SpringUtils;
 
 /**
  * 异步任务管理器
- * 
- * @author ruoyi
+ *
  */
 public class AsyncManager
 {

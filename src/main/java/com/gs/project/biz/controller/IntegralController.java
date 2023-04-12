@@ -58,6 +58,13 @@ public class IntegralController {
         return AjaxResult.success();
     }
 
+    @DeleteMapping("/")
+    public AjaxResult deleteGood(@RequestBody long[] ids) {
+        integralGoodService.deleteGoods(ids);
+
+        return AjaxResult.success();
+    }
+
     // 查询当天变动记录
     @PostMapping("/rel")
     public AjaxResult getTodayRel() {

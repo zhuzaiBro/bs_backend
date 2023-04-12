@@ -2,6 +2,8 @@ package com.gs.common.utils.file;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.gs.framework.config.GSConfig;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 import com.gs.common.constant.Constants;
@@ -11,7 +13,6 @@ import com.gs.common.exception.file.InvalidExtensionException;
 import com.gs.common.utils.DateUtils;
 import com.gs.common.utils.IdUtils;
 import com.gs.common.utils.StringUtils;
-import com.gs.framework.config.RuoYiConfig;
 
 /**
  * 文件上传工具类
@@ -33,7 +34,7 @@ public class FileUploadUtils
     /**
      * 默认上传的地址
      */
-    private static String defaultBaseDir = RuoYiConfig.getProfile();
+    private static String defaultBaseDir = GSConfig.getProfile();
 
     public static void setDefaultBaseDir(String defaultBaseDir)
     {
@@ -143,7 +144,7 @@ public class FileUploadUtils
 
     public static final String getPathFileName(String uploadDir, String fileName) throws IOException
     {
-        int dirLastIndex = RuoYiConfig.getProfile().length() + 1;
+        int dirLastIndex = GSConfig.getProfile().length() + 1;
         String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
         String pathFileName = Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
         return pathFileName;

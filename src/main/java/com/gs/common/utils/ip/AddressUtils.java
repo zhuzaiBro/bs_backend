@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gs.common.constant.Constants;
 import com.gs.common.utils.StringUtils;
 import com.gs.common.utils.http.HttpUtils;
-import com.gs.framework.config.RuoYiConfig;
+import com.gs.framework.config.GSConfig;
 
 /**
  * 获取地址类
@@ -31,7 +31,7 @@ public class AddressUtils
         {
             return "内网IP";
         }
-        if (RuoYiConfig.isAddressEnabled())
+        if (GSConfig.isAddressEnabled())
         {
             try
             {

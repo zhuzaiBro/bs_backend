@@ -16,4 +16,6 @@ public interface IntegralGoodMapper {
     public IntegralGood selectGoodById(long id);
 
     public void createIntegralGood(IntegralGood goodInfo);
+
+    public void deleteIntegralGood(long id);
 }

@@ -2,8 +2,7 @@ package com.gs.framework.security;
 
 /**
  * 用户登录对象
- * 
- * @author ruoyi
+ *
  */
 public class LoginBody
 {

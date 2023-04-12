@@ -34,16 +34,15 @@ public class ArticleController {
 
     @PutMapping("/")
     public AjaxResult updateArticle(@RequestBody Article article) {
-        AjaxResult ajax = AjaxResult.success();
+        articleService.updateArticle(article);
 
-        return ajax;
+        return AjaxResult.success();
     }
 
     @DeleteMapping("/")
     public AjaxResult deleteArticle(@RequestBody Article article) {
-        AjaxResult ajax = AjaxResult.success();
+        return AjaxResult.success();
 
-        return ajax;
     }
 
 

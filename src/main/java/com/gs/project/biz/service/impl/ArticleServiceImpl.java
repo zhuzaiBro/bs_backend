@@ -24,4 +24,16 @@ public class ArticleServiceImpl implements ArticleService {
     public void createArticle(Article article) {
         articleMapper.insertArticle(article);
     }
+
+    @Override
+    public void updateArticle(Article article) {
+        articleMapper.updateArticle(article);
+    }
+
+    @Override
+    public void deleteArticle(long[] ids) {
+        for(long id : ids) {
+            articleMapper.deleteArticle(id);
+        }
+    }
 }

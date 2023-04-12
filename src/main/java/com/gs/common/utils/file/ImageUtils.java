@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.gs.common.constant.Constants;
 import com.gs.common.utils.StringUtils;
-import com.gs.framework.config.RuoYiConfig;
+import com.gs.framework.config.GSConfig;
 
 /**
  * 图片处理工具类
@@ -81,7 +81,7 @@ public class ImageUtils
             else
             {
                 // 本机地址
-                String localPath = RuoYiConfig.getProfile();
+                String localPath = GSConfig.getProfile();
                 String downloadPath = localPath + StringUtils.substringAfter(url, Constants.RESOURCE_PREFIX);
                 in = new FileInputStream(downloadPath);
             }

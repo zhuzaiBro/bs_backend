@@ -9,4 +9,8 @@ public interface ArticleService {
     public List<Article> getArticle();
 
     public void createArticle(Article article);
+
+    public void updateArticle(Article article);
+
+    public void deleteArticle(long[] ids);
 }

@@ -122,4 +122,17 @@ public class QuestionServiceImpl implements QuestionService {
        return list;
     }
 
+    @Override
+    public void deleteQuestions(long[] ids) {
+
+        for(long id: ids) {
+            questionMapper.deleteQuestion(id);
+        }
+    }
+
+    @Override
+    public void updateQuestion(Question question) {
+        questionMapper.updateQuestion(question);
+    }
+
 }

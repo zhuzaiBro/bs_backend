@@ -17,12 +17,10 @@ import com.gs.common.utils.StringUtils;
 import com.gs.common.utils.bean.BeanValidators;
 import com.gs.common.utils.spring.SpringUtils;
 import com.gs.framework.aspectj.lang.annotation.DataScope;
-import com.gs.project.system.domain.SysPost;
 import com.gs.project.system.domain.SysRole;
 import com.gs.project.system.domain.SysUser;
 import com.gs.project.system.domain.SysUserPost;
 import com.gs.project.system.domain.SysUserRole;
-import com.gs.project.system.mapper.SysPostMapper;
 import com.gs.project.system.mapper.SysRoleMapper;
 import com.gs.project.system.mapper.SysUserMapper;
 import com.gs.project.system.mapper.SysUserPostMapper;
@@ -32,8 +30,7 @@ import com.gs.project.system.service.ISysUserService;
 
 /**
  * 用户 业务层处理
- * 
- * @author ruoyi
+ *
  */
 @Service
 public class SysUserServiceImpl implements ISysUserService
@@ -45,9 +42,6 @@ public class SysUserServiceImpl implements ISysUserService
 
     @Autowired
     private SysRoleMapper roleMapper;
-
-    @Autowired
-    private SysPostMapper postMapper;
 
     @Autowired
     private SysUserRoleMapper userRoleMapper;
@@ -141,22 +135,7 @@ public class SysUserServiceImpl implements ISysUserService
         return list.stream().map(SysRole::getRoleName).collect(Collectors.joining(","));
     }
 
-    /**
-     * 查询用户所属岗位组
-     * 
-     * @param userName 用户名
-     * @return 结果
-     */
-    @Override
-    public String selectUserPostGroup(String userName)
-    {
-        List<SysPost> list = postMapper.selectPostsByUserName(userName);
-        if (CollectionUtils.isEmpty(list))
-        {
-            return StringUtils.EMPTY;
-        }
-        return list.stream().map(SysPost::getPostName).collect(Collectors.joining(","));
-    }
+
 
     /**
      * 校验用户名称是否唯一

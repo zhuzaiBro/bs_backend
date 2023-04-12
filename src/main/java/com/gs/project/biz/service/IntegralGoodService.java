@@ -20,4 +20,6 @@ public interface IntegralGoodService {
     // 查询
     public void updateGoodInfo(IntegralGood goodInfo);
 
+    // 删除
+    public void deleteGoods(long[] ids);
 }

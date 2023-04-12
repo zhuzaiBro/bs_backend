@@ -11,12 +11,13 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gs.framework.config.GSConfig;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import com.gs.common.utils.DateUtils;
 import com.gs.common.utils.IdUtils;
 import com.gs.common.utils.StringUtils;
-import com.gs.framework.config.RuoYiConfig;
 
 /**
  * 文件处理工具类
@@ -72,7 +73,7 @@ public class FileUtils
      */
     public static String writeImportBytes(byte[] data) throws IOException
     {
-        return writeBytes(data, RuoYiConfig.getImportPath());
+        return writeBytes(data, GSConfig.getImportPath());
     }
 
     /**

@@ -1,16 +1,13 @@
 package com.gs.project.biz.controller;
 
 
-import com.gs.common.utils.SecurityUtils;
 import com.gs.framework.web.domain.AjaxResult;
 import com.gs.project.biz.domain.Question;
 import com.gs.project.biz.domain.QuestionVo;
 import com.gs.project.biz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 import static com.gs.common.utils.SecurityUtils.getUserId;
 
 @RestController
@@ -68,4 +65,26 @@ public class QuestionController {
 
         return ajax;
     }
+
+    /**
+     * Admin
+     */
+    @DeleteMapping("/")
+    public AjaxResult deleteQuestion(long[] ids) {
+        questionService.deleteQuestions(ids);
+        return AjaxResult.success();
+    }
+
+    /**
+     *
+     * Admin
+     */
+    @PutMapping("/")
+    public AjaxResult updateQuestion(Question question) {
+
+        questionService.updateQuestion(question);
+
+        return AjaxResult.success();
+    }
+
 }

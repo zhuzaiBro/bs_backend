@@ -16,4 +16,8 @@ public interface QuestionService {
 
     public  List<QuestionVo> getQuestions(String type, Integer page, Integer size);
 
+    public void deleteQuestions(long[] ids);
+
+    public void updateQuestion(Question question);
+
 }

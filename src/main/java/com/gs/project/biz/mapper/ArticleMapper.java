@@ -11,4 +11,8 @@ public interface ArticleMapper {
     public List<Article> getArticle(Integer pageBegin, Integer pageSize);
 
     public void insertArticle(Article article);
+
+    public void updateArticle(Article article);
+
+    public void deleteArticle(long id);
 }

@@ -25,7 +25,5 @@ public class QuestionVo {
     // 选项
     private List<String> options;
 
-    public QuestionVo() {
-    }
 
 }

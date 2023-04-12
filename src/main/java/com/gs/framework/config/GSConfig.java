@@ -1,5 +1,6 @@
 package com.gs.framework.config;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ConfigurationProperties(prefix = "gs")
-public class RuoYiConfig
+@Data
+public class GSConfig
 {
     /** 项目名称 */
     private String name;
@@ -30,65 +32,65 @@ public class RuoYiConfig
     /** 获取地址开关 */
     private static boolean addressEnabled;
 
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public String getVersion()
-    {
-        return version;
-    }
-
-    public void setVersion(String version)
-    {
-        this.version = version;
-    }
-
-    public String getCopyrightYear()
-    {
-        return copyrightYear;
-    }
-
-    public void setCopyrightYear(String copyrightYear)
-    {
-        this.copyrightYear = copyrightYear;
-    }
-
-    public boolean isDemoEnabled()
-    {
-        return demoEnabled;
-    }
-
-    public void setDemoEnabled(boolean demoEnabled)
-    {
-        this.demoEnabled = demoEnabled;
-    }
-
+//    public String getName()
+//    {
+//        return name;
+//    }
+//
+//    public void setName(String name)
+//    {
+//        this.name = name;
+//    }
+//
+//    public String getVersion()
+//    {
+//        return version;
+//    }
+//
+//    public void setVersion(String version)
+//    {
+//        this.version = version;
+//    }
+//
+//    public String getCopyrightYear()
+//    {
+//        return copyrightYear;
+//    }
+//
+//    public void setCopyrightYear(String copyrightYear)
+//    {
+//        this.copyrightYear = copyrightYear;
+//    }
+//
+//    public boolean isDemoEnabled()
+//    {
+//        return demoEnabled;
+//    }
+//
+//    public void setDemoEnabled(boolean demoEnabled)
+//    {
+//        this.demoEnabled = demoEnabled;
+//    }
+//
     public static String getProfile()
     {
         return profile;
     }
-
-    public void setProfile(String profile)
-    {
-        RuoYiConfig.profile = profile;
-    }
-
+//
+//    public void setProfile(String profile)
+//    {
+//        GSConfig.profile = profile;
+//    }
+//
     public static boolean isAddressEnabled()
     {
         return addressEnabled;
     }
 
-    public void setAddressEnabled(boolean addressEnabled)
-    {
-        RuoYiConfig.addressEnabled = addressEnabled;
-    }
+//    public void setAddressEnabled(boolean addressEnabled)
+//    {
+//        GSConfig.addressEnabled = addressEnabled;
+//    }
 
     /**
      * 获取导入上传路径
