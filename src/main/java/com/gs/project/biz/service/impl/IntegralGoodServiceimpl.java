@@ -91,6 +91,7 @@ public class IntegralGoodServiceimpl implements IntegralGoodService {
     public void deleteGoods(long[] ids) {
         for(long id : ids ) {
             // 遍历逐个进行删除
+            System.out.println("要删除额" +  id);
             integralGoodMapper.deleteIntegralGood(id);
         }
     }

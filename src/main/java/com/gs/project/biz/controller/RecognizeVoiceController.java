@@ -56,13 +56,7 @@ public class RecognizeVoiceController {
         try {
             identificationResults = ur.getIdentificationResults(URL);
             JSONObject jsonObject = JSONObject.parseObject(identificationResults);
-//            System.out.println(jsonObject.getString("Result"));
-//            //得到JsonString中的用户话语。
-////            String word = jsonObject.getString("data");
-//            JSONObject data = (JSONObject) jsonObject.get("data");
-//            JSONObject D =  (JSONObject) data.get("Data");
-//            String word = D.getString("Result");
-//            System.out.println(data.get("TaskId"));
+
             return new AjaxResult(200, "", jsonObject);
         } catch (Exception e) {
             e.printStackTrace();

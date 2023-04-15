@@ -49,7 +49,7 @@ public class QuestionController {
     @PostMapping("/")
     public AjaxResult addQuestion(@RequestBody Question question) {
         AjaxResult ajax = AjaxResult.success("添加成功！");
-        System.out.println(question);
+//        System.out.println(question);
         questionService.insertQuestion(question);
         return ajax;
     }

@@ -42,7 +42,9 @@ public class ArticleController {
     }
 
     @DeleteMapping("/")
-    public AjaxResult deleteArticle(@RequestBody Article article) {
+    public AjaxResult deleteArticle(@RequestBody long[] ids) {
+        articleService.deleteArticle(ids);
+
         return AjaxResult.success();
 
     }
